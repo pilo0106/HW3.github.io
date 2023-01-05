@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vehicle Showroom Management System</title>
+    
+        <!-- font awesome cdn link  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Klee+One&family=Neucha&family=Noto+Serif+TC&family=RocknRoll+One&family=Shippori+Mincho+B1&family=Titillium+Web:wght@300;400&display=swap');
+
+:root{
+    --main-color:#d3ad7f;
+    --black:#13131a;
+    --bg:#010103;
+    --border:.1rem solid rgba(255,255,255,.3);
+    --border2:.1rem solid rgba(255, 255, 255, 0.8);
+}
+
+*{
+    font-family: 'Titillium Web';
+    margin:0; 
+    padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+html{
+    font-size: 70%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+    background-color: rgb(218, 218, 218);
+}
+
+html::-webkit-scrollbar{
+    width: .8rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: #fff;
+    border-radius: 5rem;
+}
+
+section{
+    padding:10rem 7%;
+}
+
+.heading{
+    color:rgb(187, 152, 83);
+    padding-bottom: 3.5rem;
+    font-size: 5rem;
+}
+
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding:.9rem 3rem;
+    font-size:2rem;
+    color:#fff;
+    background: var(--main-color);
+    cursor: pointer;
+}
+
+.header{
+    background-color: rgb(145, 145, 145);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1.5rem 7%;
+    position: fixed;
+    top:0; left: 0; right: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    height: 10rem;
+    padding:1rem;
+    
+}
+.header .logo h1{
+    color: rgb(187, 73, 73);
+    font-size: 2.5rem;
+}
+.header .logo h2{
+    color: rgb(232, 232, 232);
+    font-size: 2.2rem;
+}
+
+.header .navbar a{
+    margin:0 3rem;
+    font-size: 2.5rem;
+    color:#fff;
+}
+
+.header .navbar a:hover{
+    color:rgb(255, 222, 146);
+}
+
+#menu-btn{
+    display: none;
+}
+
+.home{
+    /*min-height: 100vh;*/
+    display: flex;
+    margin:0 auto;
+    
+}
+.home img{
+    /*width: 147rem;*/
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+}
+
+.about .row{
+    display: flex;
+    align-items: center;
+    background:rgb(235, 235, 235);
+    flex-wrap: wrap;
+}
+.about .row .image{
+    flex:1 1 45rem;
+}
+
+.about .row .image img{
+    width: 100%;
+}
+.about .row .content{
+    display:inline;
+    flex:1 1 45rem;
+    padding:2rem;
+
+}
+
+.about .row .content h3{
+    font-size: 3rem;
+    color:#fff;
+}
+
+.about .row .content p{
+    font-size: 2rem;
+    color:rgb(79, 79, 79);
+    padding:5rem 8rem;
+    line-height: 1.8;
+}
+.products .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:1.5rem;
+}
+
+.products .box-container .box{
+    text-align: center;
+    border:var(--border);
+    padding: 2rem;
+}
+
+
+.products .box-container .box .image{
+    padding: 2.5rem 0;
+}
+
+.products .box-container .box .image img{
+    height: 20rem;
+}
+
+.products .box-container .box .content h3{
+    color:rgb(121, 121, 121);
+    font-size: 2.5rem;
+}
+
+/*222*/
+.products .box-container2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:1.5rem;
+}
+
+.products .box-container2 .box{
+    text-align: center;
+    border:var(--border2);
+    padding: 2rem;
+}
+
+
+.products .box-container2 .box .image{
+    padding: 2.5rem 0;
+}
+
+.products .box-container2 .box .image img{
+    height: 20rem;
+    width: 30rem;
+}
+
+.products .box-container2 .box .content h3{
+    color:rgb(121, 121, 121);
+    font-size: 2.5rem;
+}
+
+
+        </style>
+    
+    </head>
+    <body>
+        
+    <!-- header section starts  -->
+    
+    <header class="header">
+    
+        <a href="#home" class="logo">
+            <h1>Vehicle Showroom</h1><hr size="8rem" color="orange"><h2>Management System</h2>   
+        </a>
+    
+        <nav class="navbar">
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT US</a>
+            <a href="#bike">BIKES</a>
+            <a href="#showroom">SHOWROOM</a>
+        </nav>
+        
+    </header>
+           
+    <section class="home" id="home">
+        
+        <div class="content">
+            <img src="https://tw.sym-global.com/storage/system/product/Banner1920x900.jpg"/>
+        </div>
+    
+    </section> 
+        <section class="about" id="about">
+    
+            <p style="font-size: 2.5rem;color: rgb(154, 154, 154);">Home >> About Us</p>
+        <h1 class="heading">
+            <hr size="3rem" color="brown"> 
+            About Us </h1>
+    
+        <div class="row">
+            <!--div style="margin: auto;"><img src="https://tw.sym-global.com/storage/system/index/news/discount/2022/08/0818-MMB/MMB1.jpg"/></div-->
+            <div class="content">
+                <p>At our Honda Bike dealership in Gurgaon. we have devoted ourselves to helping and serving our
+                    customers to the best of our ablity. We belleve the Bikes we afer are the highest quality and ideal for
+                    your life needs. we understand that you rely on our web site for accurate information, and it is our
+                    pledge to deliver you relevant. correct. and abundant content.
+                <br><br>
+                    Here at Honda, we do more than just sell great Bikes. we strive to deliver 1 000% customer satisfaction
+                    from the mament you first contact our de alership. Our goal is to provide you with all the information
+                    you need to make an informed decision, whether you are purchasing a new or pre-owned Bike. or
+                    servicing the Honda you currently own. We are confident that once you know the facts. you will
+                    choose to buy and service your next Bike from our dealership.
+                <br><br>
+                    We Bikeefully built our dealership team with one objective in mind: our customers. Highly trained and
+                    professional, our sales, finance, service and parts staff are here to assist you with any questions you
+                    might have regarding both new and pre-owned Honda automoblles. Our experienced service
+                    consuitants and technicians are committed to keeping your vehicle operating at peak performance
+                    levels and our expert parts staff will meet your needs courteously and efficiently. The financial staff is
+                    highly experienced in offering expert advice for those seeking a financially fit Honda Bike loan or lease.
+                <br><br>
+                    Experience our commitment to customer satisfacdion by visiting our showroom, located at Gurgaon
+                    and experience the pride every Honda associate takes in the products we represent and the service
+                    we provide, please do not hesitate to contact us for any help you with your selection process or with
+                    any questions you may have. Our staff is happy to answer any and all inquiries in a timely fashion. we
+                    look forward to doing business with you. Good luck on your vehicle search... we look forward to meet
+                    with you soon and have a great dayl
+                </p>
+            </div>
+    
+        </div>
+        </section>
+        <section class="products" id="bike">
+            <p style="font-size: 2.5rem;color: rgb(154, 154, 154);">Home >> Available Models</p>
+            <h1 class="heading">
+                <hr size="3rem" color="brown"> 
+                Available Models </h1>
+        
+            <div class="box-container">
+        
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://tw.sym-global.com/storage/system/product/125cc-150cc/duke/color/cbs/AL998-1.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>SYM 迪爵 125</h3>
+                    </div>
+                </div>
+        
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.bikecity.com.tw/images/products/sym/180/mmbcu/TDA16T1/green.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>SYM 曼巴 MMBCU 158 TCS</h3>
+                    </div>
+                </div>
+        
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.bikecity.com.tw/images/products/sym/250up/PF30A5/bigtitle.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>SYM 野狼 SB300</h3>
+                    </div>
+                </div>
+        
+            </div>
+            <p><br></p>
+            <div class="box-container">
+        
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.bikecity.com.tw/images/products/sym/250up/LZ40W1/bigtitle.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>SYM MAXSYM 400</h3>
+                    </div>
+                </div>
+        
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.bikecity.com.tw/images/products/sym/125/KRN/KR12W1/bigtitle.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>SYM 麒麟 KRN BT 125</h3>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.bikecity.com.tw/images/products/sym/125/4mica/AL12W1/bigtitle.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>SYM 4MICA 125 碟煞</h3>
+                    </div>
+                </div>
+        
+            </div>
+        
+        </section>
+        <section class="products" id="showroom">
+            <p style="font-size: 2.5rem;color: rgb(154, 154, 154);">Home >> Showroom</p>
+            <h1 class="heading">
+                <hr size="3rem" color="brown"> 
+                Showroom </h1>
+        
+            <div class="box-container2">
+        
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.motorcycle-union.com/images/items/82/210288_1.webp" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>桃園SYM &nbsp &nbsp 03 416 2327</h3>
+                    </div>
+                </div>
+        
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.motorcycle-union.com/images/items/46/208606_1.webp" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>新北SYM &nbsp &nbsp 02 2603 4566</h3>
+                    </div>
+                </div>
+        
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.motorcycle-union.com/images/items/135/206681_1.webp" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>台中SYM &nbsp &nbsp 04 2560 6926</h3>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icons">
+                        <h1></h1>
+                    </div>
+                    <div class="image">
+                        <img src="https://www.motorcycle-union.com/images/items/239/212040_1.webp" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>台南SYM &nbsp &nbsp 06 574 2389</h3>
+                    </div>
+                </div>
+        
+            </div>
+        
+        </section>
+        
+       
+        </body>
+</html>
