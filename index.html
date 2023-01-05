@@ -8,7 +8,10 @@
     
         <!-- font awesome cdn link  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/4.0.9/jquery.inputmask.bundle.min.js"></script>
+        <script src="mask.js"> </script>
+
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Klee+One&family=Neucha&family=Noto+Serif+TC&family=RocknRoll+One&family=Shippori+Mincho+B1&family=Titillium+Web:wght@300;400&display=swap');
 
@@ -209,6 +212,32 @@ section{
     color:rgb(121, 121, 121);
     font-size: 2.5rem;
 }
+#credit-card-mask{
+    position: relative ;
+    top: 0;
+    left: 0;
+    width: 20%;
+    border: 1px solid #cecece;
+    border-radius: 1rem;
+    font-size: 2rem;
+    padding: 0.1rem 0.5rem;
+    outline: none;
+    z-index: 1;
+    margin-bottom: 2rem;
+}
+#result{
+    width: 20%;
+    background-color: white;
+    border: 1px solid #cecece;
+    border-radius: 1rem;
+}
+#oninput-result{
+    height: 1.5rem;
+    font-size: 2rem;
+    background: none;
+    
+}
+
 
 
         </style>
@@ -229,6 +258,7 @@ section{
             <a href="#about">ABOUT US</a>
             <a href="#bike">BIKES</a>
             <a href="#showroom">SHOWROOM</a>
+            <a href="#Q2">Q2</a>
         </nav>
         
     </header>
@@ -424,7 +454,44 @@ section{
             </div>
         
         </section>
-        
+        <section class="products" id="Q2">
+            <p style="font-size: 2.5rem;color: rgb(154, 154, 154);">Home >> Q2</p>
+            <h1 class="heading">
+                <hr size="3rem" color="brown"> 
+                Q2 </h1>
+            <div class="box-container">
+                <div class="box2">
+                    <input id="credit-card-mask" type="text" maxlength="12" placeholder="  input mask number 12 digits" autofocus/> 
+                    <div id="result">
+                        <div id="oninput-result" style="z-index:10;"></div>
+                        <input id="oninput-result" id="credit-card-mask" type="text" maxlength="12"  readonly/>
+                    </div>
+                    
+                </div>
+            </div>
+            <script type="text/javascript">
+                var input = document.getElementById('credit-card-mask'),oldValue,newValue,
+                    difference = function(value1, value2) {
+                    var output = [];
+                    for(i = 0; i < value2.length; i++) {
+                        if(value1[i] !== value2[i]) {
+                        output.push(value2[i]);
+                        }
+                    }
+                    return output.join("");
+                    },
+                    keyDownHandler = function(e) {
+                    oldValue = input.value;
+                    },
+                    inputHandler = function(e) {
+                    document.getElementById("oninput-result").innerHTML = '$'+input.value;
+                    }
+                ;
+
+                input.addEventListener('keydown', keyDownHandler);
+                input.addEventListener('input', inputHandler);
+            </script>
+        </section>
        
         </body>
 </html>
